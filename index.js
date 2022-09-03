@@ -1,3 +1,88 @@
+// class Casco {
+//     constructor (categoria, estilo, marca, modelo, diseño, color, precio){
+//         this.categoria = categoria
+//         this.estilo = estilo
+//         this.marca = marca
+//         this.modelo = modelo
+//         this.diseño = diseño
+//         this.color = color
+//         this.precio = precio
+//         this.nombre = this.categoria + " " + this.marca + " " + this.modelo + " " + this.diseño + " " + this.color
+//     }
+// }
+
+// const mt_stinger_brave_verde_mate = new Casco ('Casco', 'Integral', 'MT', 'Stinger', 'Brave', 'Verde mate', 98)
+// const mt_stinger_brave_verde_fluor = new Casco ('Casco', 'Integral', 'MT', 'Stinger', 'Brave', 'Verde fluor', 98)
+// const mt_stinger_brave_gris = new Casco ('Casco', 'Integral', 'MT', 'Stinger', 'Brave', 'Gris', 98)
+// const mt_stinger_brave_blanco = new Casco ('Casco', 'Integral', 'MT', 'Stinger', 'Brave', 'Blanco', 98)
+
+// console.log (mt_stinger_brave_verde)
+let productos = []
+
+class Moto{
+    constructor (categoria, estilo, marca, modelo, cilindrada, color, precio){
+        this.categoria = categoria
+        this.estilo = estilo
+        this.marca = marca
+        this.modelo = modelo
+        this.cilindrada = cilindrada
+        this.color = color
+        this.precio = precio
+        this.nombre = this.marca + " " + this.modelo + " " + this.cilindrada + " " + this.color
+    }
+}
+const hondaxr190roja = new Moto ("Moto", "Enduro", "Honda", "XR", 190, "Roja", 4990)
+productos.push (hondaxr190roja)
+const hondaxr190negra = new Moto ("Moto", "Enduro", "Honda", "XR", 190, "Negra", 4990)
+productos.push (hondaxr190negra)
+const hondaxr190blanca = new Moto ("Moto", "Enduro", "Honda", "XR", 190, "Blanca", 4990)
+productos.push (hondaxr190blanca)
+const hondaxr125roja = new Moto ("Moto", "Enduro", "Honda", "XR", 125, "Roja", 3990)
+productos.push (hondaxr125roja)
+const hondatwister125azul = new Moto ("Moto", "Enduro", "Honda", "Twister", 125, "Azul", 2490)
+productos.push (hondatwister125azul)
+
+console.log (hondaxr190roja)
+//--------------------------Elección de articulo--------------------------------------
+let seguircomprando = true
+let carrito = 0
+//let totalcompra = 0
+let decision
+let buscarproducto
+console.log (carrito)
+while (seguircomprando = true){
+    let articulo = parseInt (prompt('¿Qué moto desea comprar?' + '\n' + 
+    '1-' + hondaxr190roja.nombre + '\n' +
+    '2-' + hondaxr125roja.nombre + '\n' +
+    '3-' + hondatwister125azul.nombre
+    ))
+    if (articulo === 1) {
+        buscarproducto = productos.indexOf (hondaxr190roja) 
+        carrito = carrito + (productos[buscarproducto]).precio
+    } else if (articulo === 2){
+        buscarproducto = productos.indexOf (hondaxr125roja) 
+        carrito = carrito + (productos[buscarproducto]).precio
+    } else if (articulo === 3){
+        buscarproducto = productos.indexOf (hondatwister125azul) 
+        carrito = carrito + (productos[buscarproducto]).precio
+    } else {
+        let articulo = parseInt (prompt('¿Qué moto desea comprar?' + '\n' + 
+        '1-' + hondaxr190roja.nombre + '\n' +
+        '2-' + hondaxr125roja.nombre + '\n' +
+        '3-' + hondatwister125azul.nombre)
+        )    
+    }
+    decision = parseInt(prompt('¿Desea seguir comprando?' + '\n' + '1-Si' + '\n' + '2-No'))
+    if (decision === 1){
+        continue
+    } else if (decision === 2){
+        seguircomprando = false
+    }
+    break
+}
+alert('El monto de su carrito es de ' + carrito)
+
+//------------------------------------Crédito-----------------------------------
 let disponibilidadcredito = true
 let disponibilidadcreditobbva = true
 let antiguedadlaboral
@@ -37,7 +122,7 @@ function cuotasbbva60 (valorafinanciar){
     return valorcuota60
 }
 
-//-------------------------FUNCIONES WELP----------------------------------------
+//-------------------------Cuestionario----------------------------------------
 
 while (disponibilidadcredito = true) {
     antiguedadlaboral = parseInt (prompt ('Indique su antigüedad laboral aqui (en meses):'))
@@ -45,7 +130,7 @@ while (disponibilidadcredito = true) {
     disponibilidadcredito = true
     } else {
     alert ('No tiene créditos disponibles')
-    continue
+    break
     }
 
     recibodesueldo = parseInt (prompt ('Indique su sueldo líquido (en pesos uruguayos):'))
@@ -54,32 +139,28 @@ while (disponibilidadcredito = true) {
     } else {
         disponibilidadcredito = false
         alert ('No tiene créditos disponibles')
-        continue    
+        break    
     }
 
     while (disponibilidadcreditobbva = true){
-        montoafinanciar = parseInt (prompt ('Indique el monto a financiar (en dólares):'))
-        if (recibodesueldo < 35000 && montoafinanciar >= 4500){
-            disponibilidadcreditobbva = false
-            alert ('No tiene crédito disponible para ese monto. Pruebe con un monto inferior')
-            continue
-        }
-        let precio12cuotas = cuotasbbva12 (montoafinanciar)
-        let precio18cuotas = cuotasbbva18 (montoafinanciar)
-        let precio24cuotas = cuotasbbva24 (montoafinanciar)
-        let precio36cuotas = cuotasbbva36 (montoafinanciar)
-        let precio48cuotas = cuotasbbva48 (montoafinanciar)
-        let precio60cuotas = cuotasbbva60 (montoafinanciar)
+
+        let precio12cuotas = cuotasbbva12 (carrito)
+        let precio18cuotas = cuotasbbva18 (carrito)
+        let precio24cuotas = cuotasbbva24 (carrito)
+        let precio36cuotas = cuotasbbva36 (carrito)
+        let precio48cuotas = cuotasbbva48 (carrito)
+        let precio60cuotas = cuotasbbva60 (carrito)
 
         alert ('Las cuotas disponibles son: ' + '\n' + 
-        '12 cuotas de USD ' +precio12cuotas + + '\n' +
+        '12 cuotas de USD ' +precio12cuotas + ' dolares' + '\n' +
         '18 cuotas de USD ' +precio18cuotas + ' dolares' + '\n' +
         '24 cuotas de USD ' +precio24cuotas + ' dolares' + '\n' +
         '36 cuotas de USD ' +precio36cuotas + ' dolares' + '\n' +
         '48 cuotas de USD ' +precio48cuotas + ' dolares' + '\n' +
         '60 cuotas de USD ' +precio60cuotas
         )
-        console.log (disponibilidadcreditobbva)
+        break
     }
+    break
 }
 
