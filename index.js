@@ -45,8 +45,8 @@ productos.push (hondatwister125azul)
 console.log (hondaxr190roja)
 //--------------------------Elección de articulo--------------------------------------
 let seguircomprando = true
-let carrito = 0
-//let totalcompra = 0
+let carrito = []
+let totalcompra = 0
 let decision
 let buscarproducto
 console.log (carrito)
@@ -57,14 +57,17 @@ while (seguircomprando = true){
     '3-' + hondatwister125azul.nombre
     ))
     if (articulo === 1) {
-        buscarproducto = productos.indexOf (hondaxr190roja) 
-        carrito = carrito + (productos[buscarproducto]).precio
+        buscarproducto = productos.indexOf (hondaxr190roja)
+        carrito.push (productos[buscarproducto])
+        totalcompra = totalcompra + (productos[buscarproducto]).precio
     } else if (articulo === 2){
-        buscarproducto = productos.indexOf (hondaxr125roja) 
-        carrito = carrito + (productos[buscarproducto]).precio
+        buscarproducto = productos.indexOf (hondaxr125roja)
+        carrito.push (productos[buscarproducto])
+        totalcompra = totalcompra + (productos[buscarproducto]).precio
     } else if (articulo === 3){
-        buscarproducto = productos.indexOf (hondatwister125azul) 
-        carrito = carrito + (productos[buscarproducto]).precio
+        buscarproducto = productos.indexOf (hondatwister125azul)
+        carrito.push (productos[buscarproducto])
+        totalcompra = totalcompra + (productos[buscarproducto]).precio
     } else {
         let articulo = parseInt (prompt('¿Qué moto desea comprar?' + '\n' + 
         '1-' + hondaxr190roja.nombre + '\n' +
@@ -80,7 +83,7 @@ while (seguircomprando = true){
     }
     break
 }
-alert('El monto de su carrito es de ' + carrito)
+alert('El monto de su carrito es de ' + totalcompra)
 
 //------------------------------------Crédito-----------------------------------
 let disponibilidadcredito = true
@@ -144,12 +147,12 @@ while (disponibilidadcredito = true) {
 
     while (disponibilidadcreditobbva = true){
 
-        let precio12cuotas = cuotasbbva12 (carrito)
-        let precio18cuotas = cuotasbbva18 (carrito)
-        let precio24cuotas = cuotasbbva24 (carrito)
-        let precio36cuotas = cuotasbbva36 (carrito)
-        let precio48cuotas = cuotasbbva48 (carrito)
-        let precio60cuotas = cuotasbbva60 (carrito)
+        let precio12cuotas = cuotasbbva12 (totalcompra)
+        let precio18cuotas = cuotasbbva18 (totalcompra)
+        let precio24cuotas = cuotasbbva24 (totalcompra)
+        let precio36cuotas = cuotasbbva36 (totalcompra)
+        let precio48cuotas = cuotasbbva48 (totalcompra)
+        let precio60cuotas = cuotasbbva60 (totalcompra)
 
         alert ('Las cuotas disponibles son: ' + '\n' + 
         '12 cuotas de USD ' +precio12cuotas + ' dolares' + '\n' +
