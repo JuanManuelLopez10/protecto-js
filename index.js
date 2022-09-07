@@ -20,7 +20,7 @@
 let productos = []
 
 class Moto{
-    constructor (categoria, estilo, marca, modelo, cilindrada, color, precio){
+    constructor (categoria, estilo, marca, modelo, cilindrada, color, precio, id){
         this.categoria = categoria
         this.estilo = estilo
         this.marca = marca
@@ -28,21 +28,21 @@ class Moto{
         this.cilindrada = cilindrada
         this.color = color
         this.precio = precio
+        this.id = id
         this.nombre = this.marca + " " + this.modelo + " " + this.cilindrada + " " + this.color
     }
 }
-const hondaxr190roja = new Moto ("Moto", "Enduro", "Honda", "XR", 190, "Roja", 4990)
+const hondaxr190roja = new Moto ("Moto", "Enduro", "Honda", "XR", 190, "Roja", 4990, 103010101)
 productos.push (hondaxr190roja)
-const hondaxr190negra = new Moto ("Moto", "Enduro", "Honda", "XR", 190, "Negra", 4990)
+const hondaxr190negra = new Moto ("Moto", "Enduro", "Honda", "XR", 190, "Negra", 4990, 103010201)
 productos.push (hondaxr190negra)
-const hondaxr190blanca = new Moto ("Moto", "Enduro", "Honda", "XR", 190, "Blanca", 4990)
+const hondaxr190blanca = new Moto ("Moto", "Enduro", "Honda", "XR", 190, "Blanca", 4990, 103010301)
 productos.push (hondaxr190blanca)
-const hondaxr125roja = new Moto ("Moto", "Enduro", "Honda", "XR", 125, "Roja", 3990)
+const hondaxr125roja = new Moto ("Moto", "Enduro", "Honda", "XR", 125, "Roja", 3990, 103010102)
 productos.push (hondaxr125roja)
-const hondatwister125azul = new Moto ("Moto", "Enduro", "Honda", "Twister", 125, "Azul", 2490)
+const hondatwister125azul = new Moto ("Moto", "Enduro", "Honda", "Twister", 125, "Azul", 2490, 102010401)
 productos.push (hondatwister125azul)
 
-console.log (hondaxr190roja)
 //--------------------------Elección de articulo--------------------------------------
 let seguircomprando = true
 let carrito = []
@@ -155,12 +155,12 @@ while (disponibilidadcredito = true) {
         let precio60cuotas = cuotasbbva60 (totalcompra)
 
         alert ('Las cuotas disponibles son: ' + '\n' + 
-        '12 cuotas de USD ' +precio12cuotas + ' dolares' + '\n' +
-        '18 cuotas de USD ' +precio18cuotas + ' dolares' + '\n' +
-        '24 cuotas de USD ' +precio24cuotas + ' dolares' + '\n' +
-        '36 cuotas de USD ' +precio36cuotas + ' dolares' + '\n' +
-        '48 cuotas de USD ' +precio48cuotas + ' dolares' + '\n' +
-        '60 cuotas de USD ' +precio60cuotas
+        '12 cuotas de USD ' +Math.round(precio12cuotas) + ' dolares' + '\n' +
+        '18 cuotas de USD ' +Math.round(precio18cuotas) + ' dolares' + '\n' +
+        '24 cuotas de USD ' +Math.round(precio24cuotas) + ' dolares' + '\n' +
+        '36 cuotas de USD ' +Math.round(precio36cuotas) + ' dolares' + '\n' +
+        '48 cuotas de USD ' +Math.round(precio48cuotas) + ' dolares' + '\n' +
+        '60 cuotas de USD ' +Math.round(precio60cuotas)
         )
         break
     }
