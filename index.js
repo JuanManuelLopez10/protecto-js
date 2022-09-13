@@ -55,10 +55,10 @@ motos.push (hondatwister125azul)
 
 //-----------------------------Creando cards------------------
 let carrito = []
-let totalcompra
+let totalcompra = 0
 const enduro = document.getElementById('enduro')
-
-motos.forEach(producto => {
+const carrito_lateral = document.getElementById('carrito_lateral')
+for (const producto of motos) {
     if (producto.estilo){
         const cardEnduro = document.createElement('div')
         const tituloCard = document.createElement('h2')
@@ -74,23 +74,40 @@ motos.forEach(producto => {
         cardEnduro.setAttribute('class', 'cardEnduro')
         botonagregarcarrito.onclick = function clickbotoncarrito () {
             carrito.push(producto)
+            const divarticulocarrito = document.createElement('div')
+            const nombrearticulocarrito = document.createElement('h3')
+            const precioarticulocarrito = document.createElement('h4')
+            nombrearticulocarrito.innerText = producto.nombre
+            precioarticulocarrito.innerText = producto.precio
+            precioarticulocarrito.setAttribute('class', 'precioarticulocarrito')
+            divarticulocarrito.appendChild(nombrearticulocarrito)
+            divarticulocarrito.appendChild(precioarticulocarrito)
+            carrito_lateral.appendChild(divarticulocarrito)
+            let totalcompraa = totalcompra + producto.precio
+            console.log(totalcompraa)
+            return totalcompraa
         }
     }
-});
-console.log(carrito)
-const carrito_lateral = document.getElementById('carrito_lateral')
-carrito.forEach(articulo => {
-    if (articulo.div){
-        const divarticulocarrito = document.createElement('div')
-        const nombrearticulocarrito = document.createElement('h3')
-        const precioarticulocarrito = document.createElement('h4')
-        nombrearticulocarrito.innerText = articulo.nombre
-        precioarticulocarrito.innerText = articulo.precio
-        divarticulocarrito.appendChild(nombrearticulocarrito)
-        divarticulocarrito.appendChild(precioarticulocarrito)
-        carrito_lateral.appendChild(divarticulocarrito)
-    }
-});
+}
+
+// motos.forEach(producto => {
+//     if (producto.estilo){
+//         const cardEnduro = document.createElement('div')
+//         const tituloCard = document.createElement('h2')
+//         const preciomoto = document.createElement('h3')
+//         const botonagregarcarrito = document.createElement('button')
+//         botonagregarcarrito.innerText = 'Agregar al carrito'
+//         preciomoto.innerText = 'USD ' + producto.precio
+//         tituloCard.innerText = producto.nombre
+//         cardEnduro.appendChild(tituloCard)
+//         cardEnduro.appendChild(preciomoto)
+//         cardEnduro.appendChild(botonagregarcarrito)
+//         enduro.append(cardEnduro)
+//         cardEnduro.setAttribute('class', 'cardEnduro')
+
+//     }
+// });
+
 
 //--------------------------Elección de articulo--------------------------------------
 // let totalcompra = 0
