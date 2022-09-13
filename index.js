@@ -1,4 +1,5 @@
 //----------------------------------------Productos---------------------------------------------------------------------
+document
 let productos = []
 let motos = []
 //-------------------------------------------------------------------------------------------------------------
@@ -53,12 +54,12 @@ productos.push (hondatwister125azul)
 motos.push (hondatwister125azul)
 
 //-----------------------------Creando cards------------------
-const carrito = []
-let totalcompra = 0
+let carrito = []
+let totalcompra
 const enduro = document.getElementById('enduro')
 
 motos.forEach(producto => {
-    if (producto.estilo === 'Enduro'){
+    if (producto.estilo){
         const cardEnduro = document.createElement('div')
         const tituloCard = document.createElement('h2')
         const preciomoto = document.createElement('h3')
@@ -71,39 +72,30 @@ motos.forEach(producto => {
         cardEnduro.appendChild(botonagregarcarrito)
         enduro.append(cardEnduro)
         cardEnduro.setAttribute('class', 'cardEnduro')
-        
         botonagregarcarrito.onclick = function clickbotoncarrito () {
             carrito.push(producto)
         }
     }
 });
-
 console.log(carrito)
-const totalcompratitulo = document.createElement('h4')
-totalcompratitulo.innerText = totalcompra
-
-enduro.append(totalcompratitulo)
+const carrito_lateral = document.getElementById('carrito_lateral')
+carrito.forEach(articulo => {
+    if (articulo.div){
+        const divarticulocarrito = document.createElement('div')
+        const nombrearticulocarrito = document.createElement('h3')
+        const precioarticulocarrito = document.createElement('h4')
+        nombrearticulocarrito.innerText = articulo.nombre
+        precioarticulocarrito.innerText = articulo.precio
+        divarticulocarrito.appendChild(nombrearticulocarrito)
+        divarticulocarrito.appendChild(precioarticulocarrito)
+        carrito_lateral.appendChild(divarticulocarrito)
+    }
+});
 
 //--------------------------Elección de articulo--------------------------------------
 // let totalcompra = 0
 
 // let listaproductos = document.getElementById('listaproductos')
-
-// productos.forEach(producto => {
-//     const option = document.createElement('option')
-//     option.innerText = producto.nombre
-//     listaproductos.append(option)
-//     option.setAttribute('value', producto.id)
-//     if (listaproductos.value == producto.id){
-//         totalcompra = totalcompra + producto.precio
-//     }
-// });
-
-// console.log (totalcompra)
-// const aaa = document.getElementById('aaa')
-// let totalcompratitulo = document.createElement('h2')
-// totalcompratitulo.innerText = totalcompra
-// aaa.append(totalcompratitulo)
 
 // // let seguircomprando = true
 // // let carrito = []

@@ -1,9 +1,15 @@
-#enduro{
+#endurosect{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+#enduro{
+    width: 75%;
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
 }
+
 .cardEnduro{
     padding: 10px;
     width: 20%;
@@ -12,7 +18,7 @@
     border-radius: 20px;
     margin-bottom: 5px;
 }
-.vercarrito{
-    position: sticky;
-    font-size: 2rem;
+#carrito_lateral{
+    width: 25%;
+    background-color: blue;
 }
