@@ -55,6 +55,7 @@ motos.push (hondatwister125azul)
 
 //-----------------------------Creando cards------------------
 let carrito = []
+let totalcompratitulo = document.createElement('h3')
 let totalcompra = 0
 const enduro = document.getElementById('enduro')
 const carrito_lateral = document.getElementById('carrito_lateral')
@@ -72,6 +73,7 @@ for (const producto of motos) {
         cardEnduro.appendChild(botonagregarcarrito)
         enduro.append(cardEnduro)
         cardEnduro.setAttribute('class', 'cardEnduro')
+        carrito_lateral.appendChild(totalcompratitulo)
         botonagregarcarrito.onclick = function clickbotoncarrito () {
             carrito.push(producto)
             const divarticulocarrito = document.createElement('div')
@@ -83,13 +85,15 @@ for (const producto of motos) {
             divarticulocarrito.appendChild(nombrearticulocarrito)
             divarticulocarrito.appendChild(precioarticulocarrito)
             carrito_lateral.appendChild(divarticulocarrito)
-            let totalcompraa = totalcompra + producto.precio
-            console.log(totalcompraa)
-            return totalcompraa
+            totalcompra = totalcompra + producto.precio
+            totalcompratitulo.innerText = 'Total: ' + totalcompra
+            console.log(totalcompra)
+            return totalcompra
         }
+    console.log(totalcompra)
     }
 }
-
+console.log(totalcompra)
 // motos.forEach(producto => {
 //     if (producto.estilo){
 //         const cardEnduro = document.createElement('div')
