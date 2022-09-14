@@ -5,8 +5,9 @@ let motos = []
 //-------------------------------------------------------------------------------------------------------------
 
 class Moto{
-    constructor (id, categoria, estilo, marca, modelo, cilindrada, color, precio){
+    constructor (id, abreviado, categoria, estilo, marca, modelo, cilindrada, color, precio){
         this.id = id
+        this.abreviado = abreviado
         this.categoria = categoria
         this.estilo = estilo
         this.marca = marca
@@ -18,82 +19,85 @@ class Moto{
     }
 }
 
-const hondaxr125roja = new Moto (103010304, "Moto", "Enduro", "Honda", "XR", 125, "Roja", 3990)
+const hondaxr125roja = new Moto (103010304, "hondaxr125roja", "Moto", "Enduro", "Honda", "XR", 125, "Roja", 3990)
 productos.push (hondaxr125roja)
 motos.push (hondaxr125roja)
-const hondaxr125negra = new Moto (103010301, "Moto", "Enduro", "Honda", "XR", 125, "Negra", 3990)
+const hondaxr125negra = new Moto (103010301, "hondaxr125negra", "Moto", "Enduro", "Honda", "XR", 125, "Negra", 3990)
 productos.push (hondaxr125negra)
 motos.push (hondaxr125negra)
-const hondaxr190roja = new Moto (103010404, "Moto", "Enduro", "Honda", "XR", 190, "Roja", 4990)
+const hondaxr190roja = new Moto (103010404, "hondaxr190roja", "Moto", "Enduro", "Honda", "XR", 190, "Roja", 4990)
 productos.push (hondaxr190roja)
 motos.push (hondaxr190roja)
-const hondaxr190negra = new Moto (103010401, "Moto", "Enduro", "Honda", "XR", 190, "Negra", 4990)
+const hondaxr190negra = new Moto (103010401, "hondaxr190negra", "Moto", "Enduro", "Honda", "XR", 190, "Negra", 4990)
 productos.push (hondaxr190negra)
 motos.push (hondaxr190negra)
-const hondaxr190blanca = new Moto (103010402, "Moto", "Enduro", "Honda", "XR", 190, "Blanca", 4990)
+const hondaxr190blanca = new Moto (103010402, "hondaxr190blanca", "Moto", "Enduro", "Honda", "XR", 190, "Blanca", 4990)
 productos.push (hondaxr190blanca)
 motos.push (hondaxr190blanca)
-const hondaxre190roja = new Moto (103010504, "Moto", "Enduro", "Honda", "XRE", 190, "Roja", 6890)
+const hondaxre190roja = new Moto (103010504, "hondaxre190roja", "Moto", "Enduro", "Honda", "XRE", 190, "Roja", 6890)
 productos.push (hondaxre190roja)
 motos.push (hondaxre190roja)
-const hondaxre190azul = new Moto (103010505, "Moto", "Enduro", "Honda", "XRE", 190, "Azul", 6890)
+const hondaxre190azul = new Moto (103010505, "hondaxre190azul", "Moto", "Enduro", "Honda", "XRE", 190, "Azul", 6890)
 productos.push (hondaxre190azul)
 motos.push (hondaxre190azul)
-const hondaxre300verde = new Moto (103010706, "Moto", "Enduro", "Honda", "XRE", 190, "Verde", 7490)
+const hondaxre300verde = new Moto (103010706, "hondaxre300verde", "Moto", "Enduro", "Honda", "XRE", 190, "Verde", 7490)
 productos.push (hondaxre300verde)
 motos.push (hondaxre300verde)
-const hondaxre300azul = new Moto (103010705, "Moto", "Enduro", "Honda", "XRE", 190, "Azul", 7490)
+const hondaxre300azul = new Moto (103010705, "hondaxre300azul", "Moto", "Enduro", "Honda", "XRE", 190, "Azul", 7490)
 productos.push (hondaxre300azul)
 motos.push (hondaxre300azul)
-const hondaxre300roja = new Moto (103010704, "Moto", "Enduro", "Honda", "XRE", 190, "Roja", 7490)
+const hondaxre300roja = new Moto (103010704, "hondaxre300roja", "Moto", "Enduro", "Honda", "XRE", 190, "Roja", 7490)
 productos.push (hondaxre300roja)
 motos.push (hondaxre300roja)
 
-const hondatwister125azul = new Moto (102010401, "Moto", "Naked", "Honda", "Twister", 125, "Azul", 2490)
-productos.push (hondatwister125azul)
-motos.push (hondatwister125azul)
+//-----------------------------Creando cards FORMA 1 QUE FUNCIONA PERO NO RETORNA TOTALCOMPRA------------------
+ 
+let contadorAuxiliar = 0;
+let carrito = [];
+let carritoprecios = [];
+let totalcompratitulo = document.createElement('h3');
+let totalcompra;
+const enduro = document.getElementById('enduro');
+const carrito_lateral = document.getElementById('carrito_lateral');
+for (let i = 0; i < motos.length; i++) {
+    const producto = motos[i];
+    const cardEnduro = document.createElement('div');
+    const tituloCard = document.createElement('h2');
+    const preciomoto = document.createElement('h3');
+    const botonagregarcarrito = document.createElement('button');
+    botonagregarcarrito.innerText = 'Agregar al carrito';
+    preciomoto.innerText = 'USD ' + producto.precio;
+    tituloCard.innerText = producto.nombre;
+    cardEnduro.appendChild(tituloCard);
+    cardEnduro.appendChild(preciomoto);
+    cardEnduro.appendChild(botonagregarcarrito);
+    enduro.append(cardEnduro);
+    cardEnduro.setAttribute('class', 'cardEnduro');
+    botonagregarcarrito.onclick = function clickbotoncarrito () {
+        carrito.push(producto);
+        carritoprecios.push(producto.precio);
+        const divarticulocarrito = document.createElement('div');
+        const nombrearticulocarrito = document.createElement('h3');
+        const precioarticulocarrito = document.createElement('h4');
+        nombrearticulocarrito.innerText = producto.nombre;
+        precioarticulocarrito.innerText = producto.precio;
+        precioarticulocarrito.setAttribute('class', 'precioarticulocarrito');
+        divarticulocarrito.setAttribute('class' , 'divarticulocarrito')
+        divarticulocarrito.appendChild(nombrearticulocarrito);
+        divarticulocarrito.appendChild(precioarticulocarrito);
+        carrito_lateral.appendChild(divarticulocarrito);
+        contadorAuxiliar += producto.precio;
+        console.log(contadorAuxiliar)
+    };
+};
 
-//-----------------------------Creando cards------------------
-let carrito = []
-let totalcompratitulo = document.createElement('h3')
-let totalcompra = 0
-const enduro = document.getElementById('enduro')
-const carrito_lateral = document.getElementById('carrito_lateral')
-for (const producto of motos) {
-    if (producto.estilo){
-        const cardEnduro = document.createElement('div')
-        const tituloCard = document.createElement('h2')
-        const preciomoto = document.createElement('h3')
-        const botonagregarcarrito = document.createElement('button')
-        botonagregarcarrito.innerText = 'Agregar al carrito'
-        preciomoto.innerText = 'USD ' + producto.precio
-        tituloCard.innerText = producto.nombre
-        cardEnduro.appendChild(tituloCard)
-        cardEnduro.appendChild(preciomoto)
-        cardEnduro.appendChild(botonagregarcarrito)
-        enduro.append(cardEnduro)
-        cardEnduro.setAttribute('class', 'cardEnduro')
-        carrito_lateral.appendChild(totalcompratitulo)
-        botonagregarcarrito.onclick = function clickbotoncarrito () {
-            carrito.push(producto)
-            const divarticulocarrito = document.createElement('div')
-            const nombrearticulocarrito = document.createElement('h3')
-            const precioarticulocarrito = document.createElement('h4')
-            nombrearticulocarrito.innerText = producto.nombre
-            precioarticulocarrito.innerText = producto.precio
-            precioarticulocarrito.setAttribute('class', 'precioarticulocarrito')
-            divarticulocarrito.appendChild(nombrearticulocarrito)
-            divarticulocarrito.appendChild(precioarticulocarrito)
-            carrito_lateral.appendChild(divarticulocarrito)
-            totalcompra = totalcompra + producto.precio
-            totalcompratitulo.innerText = 'Total: ' + totalcompra
-            console.log(totalcompra)
-            return totalcompra
-        }
-    console.log(totalcompra)
-    }
-}
-console.log(totalcompra)
+console.log(carritoprecios)
+carrito.forEach(moto => {
+    contadorAuxiliar += moto.precio;
+    console.log(contadorAuxiliar)
+});
+console.log(contadorAuxiliar)
+
 // motos.forEach(producto => {
 //     if (producto.estilo){
 //         const cardEnduro = document.createElement('div')
