@@ -1,0 +1,24 @@
+[
+    {
+        "categoria":"Motos",
+        "estilo":"Enduro",
+        "nombre":"Honda XR 125 L",
+        "precio": 3990,
+        "marca":"Honda",
+        "modelo":"XR",
+        "cilindrada":125,
+        "imagen":"./hondaxr125roja.png",
+        "cantidad":0
+    },
+    {
+        "categoria":"Motos",
+        "estilo":"Enduro",
+        "nombre":"Honda XR 190 L",
+        "precio": 4990,
+        "marca":"Honda",
+        "modelo":"XR",
+        "cilindrada":190,
+        "imagen":"./hondaxr190roja.png",
+        "cantidad":0
+    }
+]
